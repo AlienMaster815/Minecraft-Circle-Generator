@@ -33,7 +33,7 @@ int main()
             //odd pemdas for sanity check i dont trust MSVC or anything by microsoft 
 
             //round the result
-            if (Result >= 5) {
+            if (Result >= .5) {
                 Result = ceill(Result);
             }
             else {
