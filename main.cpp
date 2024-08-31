@@ -28,19 +28,22 @@ int main()
 
         const long double C2 = r * r;
 
-        for (Index = r; Index > 0; Index--) {
-            long double Result = sqrt((C2 - (Index * Index)));
-            //odd pemdas for sanity check i dont trust MSVC or anything by microsoft 
+        for (int Index = r; Index > 0; Index--) {
+            long double Result = sqrtl(C2 - (Index * Index));  // Compute the square root
 
-            //round the result
-            if (Result >= .5) {
-                Result = ceill(Result);
+            // Get the fractional part of Result
+            long double fractional_part = Result - floorl(Result);
+
+            // Round the result based on the fractional part
+            if (fractional_part >= 0.5) {
+                Result = ceill(Result);  // Round up
             }
             else {
-                Result = floorl(Result);
+                Result = floorl(Result); // Round down
             }
-            std::cout << "Point At:X " << Result << ":Y:" << Index << std::endl;
 
+            // Print the calculated point
+            std::cout << "Point At: X: " << Result << " :Y: " << Index << std::endl;
         }
     }
     return -1; //program exited sudenly
